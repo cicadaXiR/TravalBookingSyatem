@@ -5,44 +5,36 @@ import axios from 'axios';
 
 function Login() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [navigate, setNavigate] = useState(false);
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [navigate,setNavigate] = useState(false);
 
-    const handleEmailChanege = (e) => {
+    const handleEmailChanege = (e) =>{
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = (e) =>{
         setPassword(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        try {
+
+        // console.log("username",username);
+        // console.log("password",password);
+        try{
             const response = await axios.post('http://localhost:8080/authenticate',
-                { email, password });
-
-            console.log('API Response:', response.data);
-
-            const { data } = response;
-            if (data && data.username) {
-
-                console.log(data.username);
-                
-                setUsername(data.username);
-                console.log(response.data);
-                setNavigate(true);
-            }
+            {email,password});
+            console.log(response.data)
+            setNavigate(true);
         }
-        catch (error) {
+        catch(error){
             console.log(error);
         }
     };
 
-    if (navigate) {
-        return <Navigate to="/home" />
+    if(navigate){
+        return <Navigate to="/home"/>
     }
 
     return (
@@ -51,17 +43,16 @@ function Login() {
                 <div className="row justify-content-sm-center my-5">
                     <div className="col-sm-4 shadow rounded g-5">
                         <h2 className="text-center pt-3 text-secondary h2">Login</h2>
-                        {username && <p>Welcome, {username}!</p>}
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="col-form-label"></label>
                                 <input type="email" className="form-control" placeholder="email" value={email}
-                                    onChange={handleEmailChanege} required />
+                                onChange={handleEmailChanege} required/>
                             </div>
                             <div className="form-group">
                                 <label className="col-form-label"></label>
                                 <input type="password" className="form-control" placeholder="password" value={password}
-                                    onChange={handlePasswordChange} required />
+                                onChange={handlePasswordChange} required/>
                             </div>
                             <div>
                                 <input type="submit" className="btn btn-success my-3" value="Login" />
