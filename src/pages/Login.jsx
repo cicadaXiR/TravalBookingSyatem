@@ -24,9 +24,13 @@ function Login() {
             const response = await axios.post('http://localhost:8080/authenticate',
                 { email, password });
 
+            console.log('API Response:', response.data);
+
             const { data } = response;
             if (data && data.username) {
+
                 console.log(data.username);
+                
                 setUsername(data.username);
                 console.log(response.data);
                 setNavigate(true);
