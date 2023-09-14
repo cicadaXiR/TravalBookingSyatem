@@ -24,10 +24,9 @@ function Home() {
         console.log(error);
       }
     };
-
+    
     fetchData();
-
-  }, [])
+  }, []);
 
   const handleLoggedOut = () => {
     setLoggedOut(true);
