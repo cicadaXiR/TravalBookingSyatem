@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../Css/home.css"
 import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
@@ -6,6 +6,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home() {
   const [loggedOut, setLoggedOut] = useState(false)
+  const [userData, setUserData] = useState('')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/user");
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data);
+        }
+        else {
+          throw new Error("failed to fetch user data");
+        }
+      }
+      catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+
+  }, [])
 
   const handleLoggedOut = () => {
     setLoggedOut(true);
@@ -57,7 +79,14 @@ function Home() {
                         </button>
                       </div>
                       <div className="modal-body">
-                        user Informations
+                        {userData ? (
+                          <>
+                            <p>Welcome, {userData.name}!</p>
+                            <p>Email: {userData.email}</p>
+                          </>
+                        ) : (
+                          <p>Loading user data...</p>
+                        )}
                       </div>
                       <div className="modal-footer">
                         <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={handleLoggedOut}>Logout</button>
