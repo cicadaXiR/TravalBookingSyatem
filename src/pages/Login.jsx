@@ -26,7 +26,7 @@ function Login() {
 
             const { data } = response;
             if (data && data.username) {
-
+                console.log(data.username);
                 setUsername(data.username);
                 console.log(response.data);
                 setNavigate(true);
