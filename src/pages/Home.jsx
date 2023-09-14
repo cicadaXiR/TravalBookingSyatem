@@ -3,6 +3,7 @@ import "../Css/home.css"
 import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 function Home() {
   const [loggedOut, setLoggedOut] = useState(false)
@@ -11,7 +12,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/user");
+        const response = await axios.get("http://localhost:8080/api/user");
         if (response.ok) {
           const data = await response.json();
           setUserData(data);
@@ -24,7 +25,7 @@ function Home() {
         console.log(error);
       }
     };
-    
+
     fetchData();
   }, []);
 
