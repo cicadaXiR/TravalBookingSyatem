@@ -1,0 +1,28 @@
+.date{
+    margin: 20px;
+    padding: 10px;
+    width: 50%; 
+    outline: none;
+}
+.from{
+    padding: 10px;
+    width: 45%;
+    outline: none;
+}
+.to{
+    padding: 10px;
+    width: 45%; 
+    outline: none;
+}
+.classes{
+    margin: 20px;
+    padding: 12px;
+    width: 50%; 
+    outline: none;
+}
+.genaral{
+    padding: 10px;
+    width: 45%;
+    outline: none;
+}
+
