@@ -46,37 +46,46 @@ function Register() {
     }
 
     return (
-        <div className="container my-5">
-            <div className="row justify-content-sm-center my-5">
-                <h2 className="text-center pt-3 text-secondary h2">Register</h2>
-                <form onSubmit={handleRegister}>
-                    <div className="form-group">
-                        <label className="col-form-label"></label>
-                        <input type="text" className="form-control" placeholder="firstname"
-                            value={firstName} onChange={handleFirstName} required />
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        <form onSubmit={handleRegister}>
+                            <div className="form-group">
+                                <label className="col-form-label"></label>
+                                <input type="text" className="form-control" placeholder="firstname"
+                                    value={firstName} onChange={handleFirstName} required />
+                            </div>
 
-                    <div className="form-group">
-                        <label className="col-form-label"></label>
-                        <input type="text" className="form-control" placeholder="lastname"
-                            value={lastName} onChange={handleLastName} required />
-                    </div>
+                            <div className="form-group">
+                                <label className="col-form-label"></label>
+                                <input type="text" className="form-control" placeholder="lastname"
+                                    value={lastName} onChange={handleLastName} required />
+                            </div>
 
-                    <div className="form-group">
-                        <label className="col-form-label"></label>
-                        <input type="email" className="form-control" placeholder="email"
-                            value={email} onChange={handleEmail} required />
+                            <div className="form-group">
+                                <label className="col-form-label"></label>
+                                <input type="email" className="form-control" placeholder="email"
+                                    value={email} onChange={handleEmail} required />
+                            </div>
+                            <div className="form-group">
+                                <label className="col-form-label"></label>
+                                <input type="password" className="form-control" placeholder="password"
+                                    value={password} onChange={handlePassword} required />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">save</button>
+                                <button className="btn btn-link" data-dismiss="modal"><Link to="/">Login</Link></button>
+                            </div>
+                        </form>
                     </div>
-                    <div className="form-group">
-                        <label className="col-form-label"></label>
-                        <input type="password" className="form-control" placeholder="password"
-                            value={password} onChange={handlePassword} required />
-                    </div>
-                    <div>
-                        <input type="submit" className="btn btn-success my-3" value="save" />
-                        <button className="btn btn-link"><Link to="/">Login</Link></button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     )
