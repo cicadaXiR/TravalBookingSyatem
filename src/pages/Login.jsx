@@ -5,56 +5,64 @@ import axios from 'axios';
 
 function Login() {
 
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [navigate,setNavigate] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [navigate, setNavigate] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleEmailChanege = (e) =>{
+    const handleEmailChanege = (e) => {
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) =>{
+    const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // console.log("username",username);
         // console.log("password",password);
-        try{
+        try {
             const response = await axios.post('http://localhost:8080/authenticate',
-            {email,password});
-            localStorage.setItem('access',response.access);
+                { email, password });
+            localStorage.setItem('access', response.access);
             console.log(localStorage)
             //console.log(response.data)
             setNavigate(true);
         }
-        catch(error){
-            console.log(error);
+        catch (error) {
+            if (error.response) {
+                setErrorMessage("Invalid credentials. Please check your email and password.")
+            }
+            else {
+                console.log(error);
+                setErrorMessage("An error occured. Please try again later.")
+            }
         }
     };
 
-    if(navigate){
-        return <Navigate to="/home"/>
+    if (navigate) {
+        return <Navigate to="/home" />
     }
 
     return (
         <div>
             <div className="container my-5">
                 <div className="row justify-content-sm-center my-5">
+                    {errorMessage && <div class="alert alert-danger">{errorMessage}</div>}
                     <div className="col-sm-4 shadow rounded g-5">
                         <h2 className="text-center pt-3 text-secondary h2">Login</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="col-form-label"></label>
                                 <input type="email" className="form-control" placeholder="email" value={email}
-                                onChange={handleEmailChanege} required/>
+                                    onChange={handleEmailChanege} required />
                             </div>
                             <div className="form-group">
                                 <label className="col-form-label"></label>
                                 <input type="password" className="form-control" placeholder="password" value={password}
-                                onChange={handlePasswordChange} required/>
+                                    onChange={handlePasswordChange} required />
                             </div>
                             <div>
                                 <input type="submit" className="btn btn-success my-3" value="Login" />
