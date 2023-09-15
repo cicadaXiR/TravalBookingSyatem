@@ -110,7 +110,6 @@ const fetchFromData = (value) => {
                     </div>)
                   }
 
-
                   <select className='classes'>
                     <option>All Classes</option>
                     <option>classes</option>
@@ -126,9 +125,9 @@ const fetchFromData = (value) => {
                     <option>classes</option>
                   </select>
                 </div>
-                <br />
-                <button type="submit" class="btn btn-primary">Search</button>
               </div>
+              <br/>
+              <button type="submit" class="btn btn-primary">Search</button>
             </form>
           </div>
         </div>

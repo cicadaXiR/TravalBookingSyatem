@@ -9,13 +9,21 @@ function Home() {
   const [loggedOut, setLoggedOut] = useState(false)
   const [userData, setUserData] = useState('')
 
-  useEffect(() => {
+  const jwtToken = localStorage.getItem('access');
+
+  const header = {
+    'Authorization':'Bearer ${jwtToken}',
+    'Content-Type':'Application/json'
+  };
+  console.log(jwtToken);
+  
+  useEffect(() => { 
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/user");
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
+        const response = await axios.get("http://localhost:8080/api/user",{header});
+        if (response.status === 200) {
+          //const data = await response.json();
+          setUserData(response.data);
         }
         else {
           throw new Error("failed to fetch user data");
