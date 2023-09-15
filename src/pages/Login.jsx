@@ -65,7 +65,7 @@ function Login() {
                                     onChange={handlePasswordChange} required />
                             </div>
                             <div>
-                                <input type="submit" className="btn btn-success my-3" value="Login" />
+                                <button type='submit' className='btn btn-success'>Login</button>
                                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
                                 <Link to="/register">SignUp</Link></button>
                             </div>
