@@ -81,7 +81,7 @@ function Register() {
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success">save</button>
-                                <button className="btn btn-link" data-dismiss="modal"><Link to="/">Login</Link></button>
+                                <button className="btn btn-link"><Link to="/">Login</Link></button>
                             </div>
                         </form>
                     </div>
