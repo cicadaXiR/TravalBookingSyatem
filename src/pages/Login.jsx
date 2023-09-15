@@ -25,7 +25,9 @@ function Login() {
         try{
             const response = await axios.post('http://localhost:8080/authenticate',
             {email,password});
-            console.log(response.data)
+            localStorage.setItem("access",response.access);
+            console.log(localStorage)
+            //console.log(response.data)
             setNavigate(true);
         }
         catch(error){
