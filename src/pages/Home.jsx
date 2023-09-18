@@ -9,14 +9,14 @@ function Home() {
   const [loggedOut, setLoggedOut] = useState(false)
   const [userData, setUserData] = useState('')
 
-  const jwtToken = localStorage.getItem('access');
+ // const jwtToken = localStorage.getItem('access');
 
   const header = {
-    'Authorization':'Bearer ${jwtToken}',
+     jwtToken : localStorage.getItem('access'),
     'Content-Type':'Application/json'
   };
-  console.log(jwtToken);
-  
+  //console.log(jwtToken);
+
   useEffect(() => { 
     const fetchData = async () => {
       try {

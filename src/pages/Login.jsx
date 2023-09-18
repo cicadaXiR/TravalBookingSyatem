@@ -26,7 +26,7 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:8080/authenticate',
                 { email, password });
-            localStorage.setItem('access', response.access);
+            localStorage.setItem('access', JSON.stringify(response.access));
             console.log(localStorage)
             //console.log(response.data)
             setNavigate(true);
@@ -55,12 +55,11 @@ function Login() {
                         <h2 className="text-center pt-3 text-secondary h2">Login</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label className="col-form-label"></label>
+                                <br/>
                                 <input type="email" className="form-control" placeholder="email" value={email}
                                     onChange={handleEmailChanege} required />
                             </div>
                             <div className="form-group">
-                                <label className="col-form-label"></label>
                                 <input type="password" className="form-control" placeholder="password" value={password}
                                     onChange={handlePasswordChange} required />
                             </div>
@@ -69,6 +68,7 @@ function Login() {
                                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
                                 <Link to="/register">SignUp</Link></button>
                             </div>
+                            <br/>
                         </form>
                     </div>
                 </div>
