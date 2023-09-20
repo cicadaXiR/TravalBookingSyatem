@@ -12,15 +12,15 @@ function Home() {
  // const jwtToken = localStorage.getItem('access');
 
   const header = {
-     jwtToken : localStorage.getItem('access'),
-    'Content-Type':'Application/json'
+      Authorization: `Bearer ${localStorage.getItem('access')}`,
+      'Content-Type': 'application/json',
   };
-  //console.log(jwtToken);
+  console.log(localStorage.getItem('access'));
 
   useEffect(() => { 
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/user",{header});
+        const response = await axios.get("http://localhost:8080/api/user",{headers:header});
         if (response.status === 200) {
           //const data = await response.json();
           setUserData(response.data);

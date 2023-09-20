@@ -26,7 +26,7 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:8080/authenticate',
                 { email, password });
-            localStorage.setItem('access', JSON.stringify(response.access));
+            localStorage.setItem('access', JSON.stringify(response.data.access));
             console.log(localStorage)
             //console.log(response.data)
             setNavigate(true);
