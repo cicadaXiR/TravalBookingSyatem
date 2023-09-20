@@ -1,7 +1,7 @@
 import React from 'react'
-import '../Css/travalstory.css';
+import '../Css/travalstory.css'
 
-export default function BusTicket() {
+function BusTicket() {
   return (
     <>
       <div>
@@ -31,3 +31,5 @@ export default function BusTicket() {
     </>
   )
 }
+
+export default BusTicket
