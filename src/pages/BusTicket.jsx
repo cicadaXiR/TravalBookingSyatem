@@ -13,7 +13,8 @@ function BusTicket() {
               <div className='form-group'>
                 <input type='search' className='form' placeholder='from' required />
                 <input type='search' className='form' placeholder='to' required />
-                <input type='date' className='form' />
+                <input type='date' className='form'/>
+                &nbsp;&nbsp;
                 <button className='btn btn-primary'>search</button>
               </div>
             </form>

@@ -71,9 +71,9 @@ function Home() {
               <li className="nav-item">
                 <input type="search" class="form-control" id="datatable-search-input" placeholder="search" style={{ width: '250px' }} />
               </li>
-
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <li className="nav-item">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
                   profile
                 </button>
 
