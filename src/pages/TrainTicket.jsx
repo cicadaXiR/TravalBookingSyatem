@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../Css/FromStations.css'
 import axios from 'axios';
 
+
 function TrainTicket() {
   const [input1, setInput1] = useState('');
   const [from, setFromResults] = useState([]);
@@ -25,15 +26,15 @@ function TrainTicket() {
     setShowToStation(false);
   }
 
-//From Station
-const fetchFromData = (value) => {
-  axios.get("http://localhost:8080/api/stations")
-    .then(response => setFromResults(response.data))
-    .catch((error) => {
-      // Handle errors here
-      console.error("An error occurred:", error);
-    });
-};
+  //From Station
+  const fetchFromData = (value) => {
+    axios.get("http://localhost:8080/api/stations")
+      .then(response => setFromResults(response.data))
+      .catch((error) => {
+        // Handle errors here
+        console.error("An error occurred:", error);
+      });
+  };
 
 
   const handleFromSearch = (value) => {
@@ -59,7 +60,7 @@ const fetchFromData = (value) => {
     setInput2(value);
     fetchToData(value);
   };
-  
+
   return (
     <>
       <div>
@@ -75,7 +76,7 @@ const fetchFromData = (value) => {
                     onChange={(e) => {
                       setShowFromStation(true);
                       handleFromSearch(e.target.value);
-                    }} required/>
+                    }} required />
 
                   {
                     showFromStation && (<div className='list'>
@@ -89,14 +90,14 @@ const fetchFromData = (value) => {
                     </div>)
                   }
 
-                  <input type="date" className='date' placeholder='date' required/>
+                  <input type="date" className='date' placeholder='date' required />
 
-                  <input type="search" className='to' placeholder="To" 
-                  value={selectedToStation ? selectedToStation.name : input2}
+                  <input type="search" className='to' placeholder="To"
+                    value={selectedToStation ? selectedToStation.name : input2}
                     onChange={(e) => {
                       setShowToStation(true);
                       handleToSearch(e.target.value);
-                    }} required/>
+                    }} required />
 
                   {
                     showToStation && (<div className='list'>
@@ -126,7 +127,7 @@ const fetchFromData = (value) => {
                   </select>
                 </div>
               </div>
-              <br/>
+              <br />
               <button type="submit" class="btn btn-primary">Search</button>
             </form>
           </div>
