@@ -6,6 +6,7 @@ import Flight from './pages/FlightTicket';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Register from './pages/Register';
 import TrainTicket from './pages/TrainTicket';
+import Stack from './DS/Stack';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/train" element={<TrainTicket/>}/>
             <Route path="/bus" element={<Bus/>}/>
             <Route path="/fight" element={<Flight/>}/>
+            <Route path="/ds" element={<Stack/>}/>
           </Routes>
         </BrowserRouter>
       </div>
